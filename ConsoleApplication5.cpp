@@ -1,33 +1,22 @@
-// hahhahahahahahahahah.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
 #include <Windows.h>
 #define MYRGB(r,g,b) (r | g << 8 | b << 16)
-using namespace std;
+
 int main()
 {
-
-
 	LPCWSTR lptext = L"hello";
-	while (true) {
+	while (1) {
 
-		HDC hdc;
-		hdc = GetWindowDC(GetDesktopWindow());
-
-		int y = GetSystemMetrics(0);
-		int x = GetSystemMetrics(1);
-
-		int sw = GetSystemMetrics(0);
-		int sh = GetSystemMetrics(1);
+		HDC hdc = GetWindowDC(GetDesktopWindow());
+		int sw = GetSystemMetrics(SM_CXSCREEN);
+		int sh = GetSystemMetrics(SM_CYSCREEN);
 		SetTextColor(hdc, MYRGB(0, 0, 255));
 		SetBkColor(hdc, MYRGB(255, 0, 0));
 		TextOutW(hdc, rand() % sw, rand() % sh, lptext, wcslen(lptext));
 		TextOutW(hdc, rand() % sw, rand() % sh, lptext, wcslen(lptext));
 		TextOutW(hdc, rand() % sw, rand() % sh, lptext, wcslen(lptext));
-		Sleep(1);
 	}
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
